@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  table
+    thead
+      tr
+        each headerTitle in headerTitles
+          th= headerTitle
+    tbody
+        each hero in members
+          tr
+            td= hero.name
+            td= hero.age
+            td= hero.secretIdentity
+            td= hero.powers
+  form(action="/subscribe", method="POST", class="form-signin full-width text-center")
+    h1(class="h3 mb-3 font-weight-normal") Join the mailing list
+    label(for="name", class="sr-only") First name
+    input(type="text", name="name", class="form-control", placeholder="First name", required, autofocus)
+    label(for="email", class="sr-only") Email
+    input(type="email", name="email", class="form-control", placeholder="Your email", required)
+    label(for="emailConfirmation", class="sr-only") Confirm email
+    input(type="email", name="emailConfirmation", class="form-control", placeholder="Your email (confirm)", required)
+    button(class="btn btn-lg btn-primary btn-block", type="submit") Subscribe
+    p(class="mt-5 mb-3 text-muted") &copy; 2020
